@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>items</key>
+	<array>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Agora Call Recorder</string>
+			<key>footerText</key>
+			<string>Records this app's own calls locally on this device. Nothing is sent anywhere unless you enable auto-upload or tap Upload manually on a saved recording.</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>label</key>
+			<string>Enable Recording</string>
+			<key>key</key>
+			<string>RecordingEnabled</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>com.yourname.agorarecorder</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>label</key>
+			<string>Auto-Upload After Call</string>
+			<key>key</key>
+			<string>AutoUploadEnabled</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>com.yourname.agorarecorder</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Live Listening</string>
+			<key>footerText</key>
+			<string>Plays the call back through this device's speaker/headphones while it's being recorded. Purely local audio routing — nothing is sent anywhere.</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>label</key>
+			<string>Listen Live While Recording</string>
+			<key>key</key>
+			<string>LiveMonitorEnabled</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>com.yourname.agorarecorder</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>label</key>
+			<string>Speed Up 3x While Listening</string>
+			<key>key</key>
+			<string>LiveMonitor3xEnabled</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>com.yourname.agorarecorder</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSTextFieldCell</string>
+			<key>label</key>
+			<string>Upload Endpoint URL</string>
+			<key>key</key>
+			<string>TwilioUploadURLString</string>
+			<key>defaults</key>
+			<string>com.yourname.agorarecorder</string>
+			<key>autocapitalizationType</key>
+			<string>None</string>
+			<key>autocorrectionType</key>
+			<string>No</string>
+			<key>keyboardType</key>
+			<string>URL</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSLinkCell</string>
+			<key>label</key>
+			<string>Recordings</string>
+			<key>detail</key>
+			<string>RecordingsListController</string>
+			<key>bundle</key>
+			<string>AgoraRecorderPrefs</string>
+		</dict>
+	</array>
+	<key>title</key>
+	<string>Agora Recorder</string>
+</dict>
+</plist>
