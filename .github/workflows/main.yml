@@ -1,0 +1,47 @@
+name: Build dylib
+
+on:
+  workflow_dispatch:
+  push:
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Unzip project if zipped
+        run: |
+          if ls *.zip >/dev/null 2>&1; then
+            mkdir -p src
+            unzip -o *.zip -d src
+          fi
+
+      - name: Install Theos
+        run: |
+          brew install ldid make dpkg
+          git clone --recursive https://github.com/theos/theos.git $HOME/theos
+          rm -rf $HOME/theos/sdks
+          git clone --depth=1 https://github.com/theos/sdks.git $HOME/theos/sdks
+          echo "THEOS=$HOME/theos" >> $GITHUB_ENV
+          echo "$(brew --prefix make)/libexec/gnubin" >> $GITHUB_PATH
+
+      - name: Build
+        run: |
+          MK=$(find . -name Makefile -not -path "*/.theos/*" -not -path "./.git/*" | head -1)
+          echo "Project dir: $(dirname "$MK")"
+          cd "$(dirname "$MK")"
+          sed -i '' 's/^SUBPROJECTS/# SUBPROJECTS/' Makefile || true
+          make clean || true
+          make FINALPACKAGE=1
+
+      - name: Collect dylib
+        run: |
+          mkdir -p out
+          find . -name "*.dylib" -path "*.theos/obj*" -exec cp {} out/ \;
+          ls -la out
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dylib
+          path: out/*.dylib
