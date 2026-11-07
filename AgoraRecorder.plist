@@ -1,0 +1,9 @@
+{
+    Filter = {
+        /* Required: replace with YOUR app's real bundle ID.
+           Without this, MobileSubstrate will load the dylib into every
+           process on the device, which is both wrong and against the
+           point of this project (recording only an app you own). */
+        Bundles = ( "com.yourcompany.yourapp" );
+    };
+}
